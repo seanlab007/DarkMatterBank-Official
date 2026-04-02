@@ -5,51 +5,111 @@
 </p>
 
 <p align="center">
-  <strong>Next Generation AI Payment Infrastructure</strong>
-</p>
-
-<p align="center">
-  <a href="https://darkmatterbank.com">Website</a> •
-  <a href="https://docs.darkmatterbank.com">Documentation</a> •
-  <a href="https://discord.gg/darkmatterbank">Discord</a> •
-  <a href="https://twitter.com/DarkMatterBank">X (Twitter)</a>
+  <a href="https://github.com/DarkMatterBank-Official/DarkMatterBank-Official/actions/workflows/ci.yml">
+    <img src="https://github.com/DarkMatterBank-Official/DarkMatterBank-Official/actions/workflows/ci.yml/badge.svg" alt="CI"/>
+  </a>
+  <a href="https://discord.gg/darkmatterbank">
+    <img src="https://img.shields.io/badge/Discord-Join-7289da" alt="Discord"/>
+  </a>
+  <a href="https://twitter.com/DarkMatterBank">
+    <img src="https://img.shields.io/badge/X-Follow-1DA1F2" alt="Twitter"/>
+  </a>
 </p>
 
 ---
 
 ## Overview
 
-DarkMatterBank is a decentralized payment infrastructure designed for AI agents and automated systems. Built on multi-chain technology, it enables seamless value transfer, smart contract execution, and programmable money flows for the AI economy.
+DarkMatterBank is a **next-generation AI payment infrastructure** designed for the emerging AI economy. We enable seamless value transfer between AI agents, automated systems, and humans through a secure, multi-chain decentralized protocol.
 
-### Key Features
+### Why DarkMatterBank?
 
-- **Agent-native Payments**: Built for AI-to-AI and AI-to-Human transactions
-- **Multi-Chain Support**: Ethereum, Polygon, Arbitrum, Optimism, and more
-- **Session Keys**: Secure, temporary permissions for automated operations
-- **Gasless Transactions**: Sponsor gas fees for better user experience
+The AI economy requires specialized payment infrastructure:
+
+- **AI-to-AI Payments**: Native support for agent-to-agent transactions
+- **Programmable Money**: Smart contract-controlled fund flows
+- **Gasless UX**: Sponsor gas fees for frictionless user experience
+- **Session Keys**: Temporary permissions for automated operations
 - **Compliance Ready**: Built-in KYA (Know Your Agent) verification
-- **Open Architecture**: Fully extensible and developer-friendly
+
+## Key Products
+
+### AgentPay Vault
+Secure multi-signature vault for AI agent operations with session key support. Enables:
+- Programmable spending limits
+- Role-based access control
+- Transaction batching
+- Audit trails
+
+### Payment Gateway
+Universal payment routing with:
+- Multi-chain support (Ethereum, Polygon, Arbitrum, Optimism, Base)
+- Gas sponsorship
+- Multi-token support (USDC, USDT, ETH, native tokens)
+- Automatic currency conversion
+
+### KYA Registry
+Know Your Agent verification system for:
+- Agent identity verification
+- Credential management
+- Trust scoring
+- Compliance reporting
+
+## Technology Stack
+
+| Layer | Technology |
+|-------|------------|
+| Smart Contracts | Solidity |
+| SDK | TypeScript/JavaScript |
+| Backend | Node.js |
+| Networks | Ethereum, Polygon, Arbitrum, Optimism, Base |
 
 ## Quick Start
 
-```bash
-# Install dependencies
-npm install @darkmatterbank/sdk
+### Installation
 
-# Initialize the SDK
+```bash
+npm install @darkmatterbank/sdk
+```
+
+### Initialize SDK
+
+```javascript
 import { DarkMatterBank } from '@darkmatterbank/sdk';
 
 const dmb = new DarkMatterBank({
   network: 'polygon',
-  apiKey: 'your-api-key'
+  apiKey: process.env.DMB_API_KEY
+});
+```
+
+### Create Payment
+
+```javascript
+const payment = await dmb.payments.create({
+  to: '0x742d35Cc6634C0532925a3b844Bc9e7595f2bD31',
+  amount: '100',
+  token: 'USDC',
+  metadata: {
+    description: 'AI Agent Service Payment',
+    reference: 'order_123'
+  }
 });
 
-// Create a payment
-const payment = await dmb.payments.create({
-  to: '0x...',
-  amount: '100',
-  token: 'USDC'
+console.log('Payment initiated:', payment.txHash);
+```
+
+### Create Session Key
+
+```javascript
+const session = await dmb.vaults.createSession({
+  vaultId: 'vault_0x...',
+  expiresIn: 3600, // 1 hour
+  permissions: ['transfer', 'approve'],
+  maxAmount: '1000'
 });
+
+console.log('Session key created:', session.sessionKey);
 ```
 
 ## Architecture
@@ -79,41 +139,42 @@ const payment = await dmb.payments.create({
 └─────────────────┘ └─────────────────┘ └─────────────────┘
 ```
 
-## Products
-
-### AgentPay Vault
-Secure multi-signature vault for AI agent operations with session key support.
-
-### Payment Gateway
-Universal payment routing with gas sponsorship and multi-token support.
-
-### KYA Registry
-Know Your Agent verification system for compliance and trust.
-
-## Resources
+## Documentation
 
 - [Documentation](https://docs.darkmatterbank.com)
 - [API Reference](https://docs.darkmatterbank.com/api)
 - [Smart Contracts](https://github.com/DarkMatterBank-Official/contracts)
-- [SDK](https://github.com/DarkMatterBank-Official/sdk)
-- [Blog](https://medium.com/@darkmatterbank)
+- [SDK Documentation](https://github.com/DarkMatterBank-Official/sdk)
 
-## Community
+## Community & Support
 
-Join our growing community:
-
-- [Discord](https://discord.gg/darkmatterbank) - Main community channel
-- [X (Twitter)](https://twitter.com/DarkMatterBank) - Official announcements
+- [Discord](https://discord.gg/darkmatterbank) - Main community
+- [X (Twitter)](https://twitter.com/DarkMatterBank) - Announcements
 - [Telegram](https://t.me/darkmatterbank) - Global community
 - [Reddit](https://reddit.com/r/darkmatterbank) - Discussion
+- [Medium](https://medium.com/@darkmatterbank) - Blog
+
+## Leadership
+
+**Benedict Ashford** - CEO & Founder
+- [X/Twitter](https://twitter.com/BenedictAshford)
+- [LinkedIn](https://linkedin.com/in/benedictashford)
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions from developers!
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
 ## Security
 
-For security concerns, please contact: security@darkmatterbank.com
+For security concerns, please contact: **security@darkmatterbank.com**
 
 ## License
 
@@ -122,5 +183,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  Built with ❤️ for the AI economy
+  Built with ❤️ for the AI economy<br/>
+  <a href="https://darkmatterbank.com">darkmatterbank.com</a>
 </p>
